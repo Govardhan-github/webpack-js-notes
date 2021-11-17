@@ -1,0 +1,113 @@
+WEBPACK: 
+    1.webpack means bundle of modules or popular module bundler ,it is a toll for build application .
+            1.module means combination or group of components and services ..etc..
+    2.whenever webpack  process our application internally dependency graph will generate from entry points then it will combine our total modules into one file.
+
+    3.In webapck there are 4 important elements are there
+        1.Entry point
+            1.entry point indicates which module webpack should use to start our application build
+            2.in this we have to give path of entry point file
+                ex-
+
+        2.Loaders
+            1.handles our types of files by using loaders
+        3.plugins
+        4.output
+        5.mode
+
+
+
+Configuration:
+    
+    step1:
+        1.first we have to create package.json
+            npm init -y 
+                1.it will create package.json for our application
+
+        2.we have to install webpack into our project from cli
+            npm i webpack webpack-cli --save-dev
+
+    step2:
+        1.here we have to create a file in folder structure i.e webpack.config.js
+        2.now in that file write module.exports object
+        3.we have to give entrypoint path here
+
+    step 3:
+        1. so here create a module object in that create rules array in that we have to configure of loaders , svg , css and babel loaders.
+            link for loaders--- npmjs.com
+
+        2.in that link we have to import svg-inline-loader so search this loader in that and install itin project cli
+            npm install svg-inline-loader --save-dev
+                1.after installation and copy paste that configuration into your modules  in webpack.config.js
+
+        3.import the css loader 
+            npm install --save-dev  css-loader style-loader
+                1.copy the configuration 
+
+        4.import babel loader 
+            npm install -D babel-loader @babel/core @babel/preset-env webpack
+                1.if we want to use advance java script concepts in webpack so we have to import babel loaders
+                    {
+                        test:/\.(js)$/,
+                        use:"babel-loader
+                    }
+
+    step:4
+        1.now we have to give output path before that we have to import path in webpack.config.js
+            const path = require('path')
+        2.now output path is
+            output : {
+                path: path.resolve(__dirname, 'dist'),
+                filename: "our output filename" ex--" bundle.js"
+            }                    
+        
+    step5:
+
+        1.In angular whenever you did ng serve --open command internally angular create 5 files like    
+            1.runtime.js
+            2.vendor.js
+            3.style.js
+            4.main.js
+            5.
+
+        2.so here we created some files finally that all files bundle in bundle.js so we have to inject this file into index.html so we  need to use html-plugin
+                npm install --save-dev html-webpack-plugin
+                 1.copy configurtion
+                 2.import plugin in that file
+
+        3. it will create index.html file and it injects our outputfile into this inde.html file
+
+    step6:
+        1.we have to install webpack server
+            npm install webpack-dev-server --save-dev
+
+        2.need to import mode
+            mode : process.env.NODE_ENV === "production" ? "production" : " development"
+
+    step7:
+        1.update package.json
+
+        2.in scripts 
+             "start": "webpack --mode development",
+             "build": "NODE_ENV='production' webpack", 
+
+        3.create folder which given in entrypoint path
+            1. create index.js
+            2.in that print array
+
+    step8:
+        1.now run command npm start
+            1.it will look in pacakage.json---webpack----entrypoint.js---it will open file----it will look at each loaders nd handles it----it will create bundle.js and index.html
+
+        2.in bundle.js output will come    
+
+
+
+
+
+
+        
+            
+
+       
+
